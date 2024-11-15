@@ -1,16 +1,17 @@
 locals {
     domain_guid = replace(var.domain, ".", "-")
     o365_mx   = format("0 %s.mail.protection.outlook.com", local.domain_guid)
+    custom_mx_record = ["0 mx0a-00370801.pphosted.com", "0 mx0b-00370801.pphosted.com"]
     o365_spf  = "include:spf.protection.outlook.com"
     dkim_dom  = format("%s._domainkey.%s.onmicrosoft.com", local.domain_guid, var.tenant_name)
     dkim = [
         {
-            name  = format("selector1._domainkey.%s", var.domain)
-            value = format("selector1-%s", local.dkim_dom)
+            name  = format("s1._domainkey.%s", var.domain)
+            value = "v=DKIM1\; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6mhwUlgv0FktFQJx3raiN50MA0s5wUzZ7pO/2jDGKxzS4haY612E7YYFoPFjeVftm8d1+P3u9QNawCrRQ49TGB4eMKz8W5ug/Q2PWTOOYwxDqADDQ9nB9a9A/iapPBEMhyXKkoQrwEuthpTERbIL+BHXnQim+k4u8/MUbAo2z7eNww/1e2Q+nwoivSxLF/6MD/iDRLDQFtTT4uKhJzJj37v0WuHe6iGkVtT0XG0ZyuzD6DvyhexqRgaoQeOuElHHK8Vx+qduzKCk0rd+T+MF9U7vC4fOw02FDTzDb5gyDfjRDdv3cE/DvXzQy5qQq4piI9lOO2UdPruFtMXtHP8tPwIDAQAB"
         },
         {
-            name  = format("selector2._domainkey.%s", var.domain)
-            value = format("selector2-%s", local.dkim_dom)
+            name  = format("s2._domainkey.%s", var.domain)
+            value =  "v=DKIM1\; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyy5XzeEgaUd7UpQZg01gk2z41kEUNvZhy5AtfHUoDIuNdJx7clS/xcyn5qj956WkHgJevvj+/4o9LH+Q/b89GllNaOGAb24FegupZDZ3Tk6W4FZO6ulAtvnm5SOfmx8YU+pOdErsyyi2FjyRT2rWgP+9ekVFJ+AAvbEokx0/bPMTW4KkMxi+OgqBP7MaRHtZubpFOgCrQKvYe2IV3laEDIAu164saEl4auK8M9NVHFHUNyZ7rR0xsvoH9RMuSk0Xxosx0rrIacnZ9yWzwGhUPe9z2OJiKCzizWNrXR55bIKMmnmHEAT34SWKXkRGRqlYJGQ6STetvakm9lT3G11xMwIDAQAB"
         },
     ]
     sfb = [
@@ -62,11 +63,11 @@ resource "aws_route53_record" "mx" {
 }
 
 resource "aws_route53_record" "custom_mx" {
-    count   = var.enable_exchange && var.enable_custom_mx && length(var.custom_mx_record) > 0 ? 1 : 0
+    count   = var.enable_exchange && var.enable_custom_mx && length(local.custom_mx_record) > 0 ? 1 : 0
 
     zone_id = var.zone_id
     name    = ""
-    records = [var.custom_mx_record]
+    records = [local.custom_mx_record]
     type    = "MX"
     ttl     = var.ttl
 }
@@ -113,7 +114,7 @@ resource "aws_route53_record" "dkim" {
     zone_id = var.zone_id
     name    = lookup(local.dkim[count.index], "name")
     records = [lookup(local.dkim[count.index], "value")]
-    type    = "CNAME"
+    type    = "TXT"
     ttl     = var.ttl
 }
 
