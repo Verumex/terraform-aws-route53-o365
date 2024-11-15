@@ -63,11 +63,11 @@ resource "aws_route53_record" "mx" {
 }
 
 resource "aws_route53_record" "custom_mx" {
-    count   = var.enable_exchange && var.enable_custom_mx && length(local.custom_mx_record) > 0 ? 1 : 0
+    count   = var.enable_exchange && var.enable_custom_mx ? 1 : 0
 
     zone_id = var.zone_id
     name    = ""
-    records = [local.custom_mx_record]
+    records = local.custom_mx_record
     type    = "MX"
     ttl     = var.ttl
 }
