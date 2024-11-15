@@ -7,11 +7,11 @@ locals {
     dkim = [
         {
             name  = format("s1._domainkey.%s", var.domain)
-            value = "v=DKIM1\; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6mhwUlgv0FktFQJx3raiN50MA0s5wUzZ7pO/2jDGKxzS4haY612E7YYFoPFjeVftm8d1+P3u9QNawCrRQ49TGB4eMKz8W5ug/Q2PWTOOYwxDqADDQ9nB9a9A/iapPBEMhyXKkoQrwEuthpTERbIL+BHXnQim+k4u8/MUbAo2z7eNww/1e2Q+nwoivSxLF/6MD/iDRLDQFtTT4uKhJzJj37v0WuHe6iGkVtT0XG0ZyuzD6DvyhexqRgaoQeOuElHHK8Vx+qduzKCk0rd+T+MF9U7vC4fOw02FDTzDb5gyDfjRDdv3cE/DvXzQy5qQq4piI9lOO2UdPruFtMXtHP8tPwIDAQAB"
+            value = "v=DKIM1; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6mhwUlgv0FktFQJx3raiN50MA0s5wUzZ7pO/2jDGKxzS4haY612E7YYFoPFjeVftm8d1+P3u9QNawCrRQ49TGB4eMKz8W5ug/Q2PWTOOYwxDqADDQ9nB9a9A/iapPBEMhyXKkoQrwEuthpTERbIL+BHXnQim+k4u8/MUbAo2z7eNww/1e2Q+nwoivSxLF/6MD/iDRLDQFtTT4uKhJzJj37v0WuHe6iGkVtT0XG0ZyuzD6DvyhexqRgaoQeOuElHHK8Vx+qduzKCk0rd+T+MF9U7vC4fOw02FDTzDb5gyDfjRDdv3cE/DvXzQy5qQq4piI9lOO2UdPruFtMXtHP8tPwIDAQAB"
         },
         {
             name  = format("s2._domainkey.%s", var.domain)
-            value =  "v=DKIM1\; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyy5XzeEgaUd7UpQZg01gk2z41kEUNvZhy5AtfHUoDIuNdJx7clS/xcyn5qj956WkHgJevvj+/4o9LH+Q/b89GllNaOGAb24FegupZDZ3Tk6W4FZO6ulAtvnm5SOfmx8YU+pOdErsyyi2FjyRT2rWgP+9ekVFJ+AAvbEokx0/bPMTW4KkMxi+OgqBP7MaRHtZubpFOgCrQKvYe2IV3laEDIAu164saEl4auK8M9NVHFHUNyZ7rR0xsvoH9RMuSk0Xxosx0rrIacnZ9yWzwGhUPe9z2OJiKCzizWNrXR55bIKMmnmHEAT34SWKXkRGRqlYJGQ6STetvakm9lT3G11xMwIDAQAB"
+            value =  "v=DKIM1; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyy5XzeEgaUd7UpQZg01gk2z41kEUNvZhy5AtfHUoDIuNdJx7clS/xcyn5qj956WkHgJevvj+/4o9LH+Q/b89GllNaOGAb24FegupZDZ3Tk6W4FZO6ulAtvnm5SOfmx8YU+pOdErsyyi2FjyRT2rWgP+9ekVFJ+AAvbEokx0/bPMTW4KkMxi+OgqBP7MaRHtZubpFOgCrQKvYe2IV3laEDIAu164saEl4auK8M9NVHFHUNyZ7rR0xsvoH9RMuSk0Xxosx0rrIacnZ9yWzwGhUPe9z2OJiKCzizWNrXR55bIKMmnmHEAT34SWKXkRGRqlYJGQ6STetvakm9lT3G11xMwIDAQAB"
         },
     ]
     sfb = [
