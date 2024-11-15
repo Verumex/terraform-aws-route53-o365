@@ -6,12 +6,12 @@ locals {
     dkim_dom  = format("%s._domainkey.%s.onmicrosoft.com", local.domain_guid, var.tenant_name)
     dkim = [
         {
-            name  = format("s1._domainkey.%s", var.domain)
-            value = "v=DKIM1; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6mhwUlgv0FktFQJx3raiN50MA0s5wUzZ7pO/2jDGKxzS4haY612E7YYFoPFjeVftm8d1+P3u9QNawCrRQ49TGB4eMKz8W5ug/Q2PWTOOYwxDqADDQ9nB9a9A/iapPBEMhyXKkoQrwEuthpTERbIL+BHXnQim+k4u8/MUbAo2z7eNww/1e2Q+nwoivSxLF/6MD/iDRLDQFtTT4uKhJzJj37v0WuHe6iGkVtT0XG0ZyuzD6DvyhexqRgaoQeOuElHHK8Vx+qduzKCk0rd+T+MF9U7vC4fOw02FDTzDb5gyDfjRDdv3cE/DvXzQy5qQq4piI9lOO2UdPruFtMXtHP8tPwIDAQAB"
+            name  = format("selector1._domainkey.%s", var.domain)
+            value =  "v=DKIM1; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA464yLk5C8ee+gPNAHuAtyxdmDFjYmdgh9lfWHbX1PrgHpHVWQbaOkTgmDjJWNAXK2BnZx5G6zfGWcryLB7WMDw++OfN8I4NXDFwGY4qtRsFSr6spp4DGCGMAKWri53F5MGbftYBAPQK8FP/Ia8XXOQtMZj3khkbJdJhLkljLXkoO7eacWVmdA3ACn6tvp1cmoM/fJY7XZQ06mvLIkyfrxHPfZTcrr7yPD2Kp/A09Lgr3IsBL4Vr361XMX9z60w8cCdybVdo3McLBI7NEz7Lrj6Hs/MMT2yu4N5K9zWiu9YT19DJKvrh1S67kI1rW+O1J65mBmIM8176ieVhxpkO3CQIDAQAB"
         },
         {
-            name  = format("s2._domainkey.%s", var.domain)
-            value =  "v=DKIM1; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyy5XzeEgaUd7UpQZg01gk2z41kEUNvZhy5AtfHUoDIuNdJx7clS/xcyn5qj956WkHgJevvj+/4o9LH+Q/b89GllNaOGAb24FegupZDZ3Tk6W4FZO6ulAtvnm5SOfmx8YU+pOdErsyyi2FjyRT2rWgP+9ekVFJ+AAvbEokx0/bPMTW4KkMxi+OgqBP7MaRHtZubpFOgCrQKvYe2IV3laEDIAu164saEl4auK8M9NVHFHUNyZ7rR0xsvoH9RMuSk0Xxosx0rrIacnZ9yWzwGhUPe9z2OJiKCzizWNrXR55bIKMmnmHEAT34SWKXkRGRqlYJGQ6STetvakm9lT3G11xMwIDAQAB"
+            name  = format("selector2._domainkey.%s", var.domain)
+            value =  "v=DKIM1; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAraYCCCxCQBZbRhOGJNcL6M/9Pk54BonkvIFLA6WWlKAtvR53OxhdWF9jDyAzC55LqMr1Zb1Q3eRsrz9M0QnrfKqpRABEoDWqm66jlb72+v3hexURddMwfrqqrt4oqA4V2xHjKHkb03rfLe9+Zf8Vlf0A2TQzb9Ca34CNvRA6Npe8bcZjfBxzHr9kIOrxFTb52dd+R+qB16odU6ZQJxGrTpH5El8KA4biFWbcnCQDofu2KF4/5TSwmeQG12NKVHjtqzOAJlDh5eC9al4LHbhxSUJLiePa0Tz4lKahalXXLkEa0A1T1Kvy876xXhWd0pAVSuqptdOFgDfPlh8ezRM88wIDAQAB"
         },
     ]
     sfb = [
