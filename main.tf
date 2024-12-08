@@ -3,7 +3,6 @@ locals {
     o365_mx   = format("0 %s.mail.protection.outlook.com", local.domain_guid)
     custom_mx_record = ["0 mx0a-00370801.pphosted.com", "0 mx0b-00370801.pphosted.com"]
     o365_spf  = "include:spf.protection.outlook.com"
-    root_txt_values = ["MS=ms000000"]
     dkim_dom  = format("%s._domainkey.%s.onmicrosoft.com", local.domain_guid, var.tenant_name)
     dkim = [
         {
